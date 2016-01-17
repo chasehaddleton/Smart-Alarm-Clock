@@ -2,9 +2,9 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.UI;
+package com.chasehaddleton.alarmclock.UI;
 
-import com.chasehaddleton.weather.Weather;
+import com.chasehaddleton.alarmclock.weather.Weather;
 
 public class ExtendedWeatherUpdate implements Runnable {
     final String location;

@@ -4,8 +4,8 @@
 
 package com.chasehaddleton.alarmclock;
 
-import com.chasehaddleton.UI.TimeUpdate;
-import com.chasehaddleton.UI.WeatherUpdate;
+import com.chasehaddleton.alarmclock.UI.TimeUpdate;
+import com.chasehaddleton.alarmclock.UI.WeatherUpdate;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
