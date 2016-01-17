@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_alarm_clock" default="compile.module.alarm_clock">
+  <dirname property="module.alarm_clock.basedir" file="${ant.file.module_alarm_clock}"/>
+  
+  <property name="module.jdk.home.alarm_clock" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.alarm_clock" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.alarm_clock" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.alarm_clock" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="alarm_clock.output.dir" value="${module.alarm_clock.basedir}/out/production/Alarm Clock"/>
+  <property name="alarm_clock.testoutput.dir" value="${module.alarm_clock.basedir}/out/test/Alarm Clock"/>
+  
+  <path id="alarm_clock.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="alarm_clock.module.production.classpath">
+    <path refid="${module.jdk.classpath.alarm_clock}"/>
+    <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
+  </path>
+  
+  <path id="alarm_clock.runtime.production.module.classpath">
+    <pathelement location="${alarm_clock.output.dir}"/>
+    <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
+  </path>
+  
+  <path id="alarm_clock.module.classpath">
+    <path refid="${module.jdk.classpath.alarm_clock}"/>
+    <pathelement location="${alarm_clock.output.dir}"/>
+    <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
+  </path>
+  
+  <path id="alarm_clock.runtime.module.classpath">
+    <pathelement location="${alarm_clock.testoutput.dir}"/>
+    <pathelement location="${alarm_clock.output.dir}"/>
+    <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.alarm_clock">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.alarm_clock">
+    <patternset refid="excluded.from.module.alarm_clock"/>
+  </patternset>
+  
+  <path id="alarm_clock.module.sourcepath">
+    <dirset dir="${module.alarm_clock.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.alarm_clock" depends="compile.module.alarm_clock.production,compile.module.alarm_clock.tests" description="Compile module Alarm Clock"/>
+  
+  <target name="compile.module.alarm_clock.production" depends="register.custom.compilers" description="Compile module Alarm Clock; production classes">
+    <mkdir dir="${alarm_clock.output.dir}"/>
+    <javac2 destdir="${alarm_clock.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.alarm_clock}/javac">
+      <compilerarg line="${compiler.args.alarm_clock}"/>
+      <bootclasspath refid="alarm_clock.module.bootclasspath"/>
+      <classpath refid="alarm_clock.module.production.classpath"/>
+      <src refid="alarm_clock.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.alarm_clock"/>
+    </javac2>
+    
+    <copy todir="${alarm_clock.output.dir}">
+      <fileset dir="${module.alarm_clock.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.alarm_clock.tests" depends="register.custom.compilers,compile.module.alarm_clock.production" description="compile module Alarm Clock; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.alarm_clock" description="cleanup module">
+    <delete dir="${alarm_clock.output.dir}"/>
+    <delete dir="${alarm_clock.testoutput.dir}"/>
+  </target>
+</project>
