@@ -2,7 +2,7 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.alarmclock.clock;
+package com.chasehaddleton.smartalarmclock.clock;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

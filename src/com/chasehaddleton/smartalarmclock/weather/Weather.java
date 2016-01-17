@@ -2,7 +2,7 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.alarmclock.weather;
+package com.chasehaddleton.smartalarmclock.weather;
 
 import java.io.BufferedReader;
 import java.io.IOException;

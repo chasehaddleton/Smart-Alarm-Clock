@@ -2,9 +2,9 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.alarmclock.UI;
+package com.chasehaddleton.smartalarmclock.UI;
 
-import com.chasehaddleton.alarmclock.clock.Clock;
+import com.chasehaddleton.smartalarmclock.clock.Clock;
 
 public class TimeUpdate implements Runnable {
     @Override

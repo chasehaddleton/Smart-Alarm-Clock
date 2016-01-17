@@ -2,16 +2,16 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.alarmclock;
+package com.chasehaddleton.smartalarmclock;
 
-import com.chasehaddleton.alarmclock.UI.TimeUpdate;
-import com.chasehaddleton.alarmclock.UI.WeatherUpdate;
+import com.chasehaddleton.smartalarmclock.UI.TimeUpdate;
+import com.chasehaddleton.smartalarmclock.UI.WeatherUpdate;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class AlarmClock {
+public class SmartAlarmClock {
 
     public static void main(String[] args) {
         Runnable timeUpdate = new TimeUpdate();
