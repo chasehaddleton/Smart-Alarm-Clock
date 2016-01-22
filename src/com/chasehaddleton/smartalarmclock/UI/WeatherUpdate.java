@@ -19,6 +19,8 @@ public class WeatherUpdate implements Runnable {
     }
 
     private void updateWeather () {
-        System.out.println(new Weather(this.location).getWeatherType());
+        Weather weather = new Weather(this.location);
+        System.out.println(weather.getWeatherType());
+        System.out.println(weather.getTemperature());
     }
 }

@@ -19,7 +19,11 @@ public class ExtendedWeatherUpdate implements Runnable {
     }
 
     private void updateWeather () {
-        System.out.println(new Weather(this.location).getWeatherType());
-        System.out.println(new Weather(this.location).getWeatherID());
+        Weather weather = new Weather(this.location);
+        System.out.println(weather.getWeatherType());
+        System.out.println(weather.getWeatherID());
+        System.out.println(weather.getTemperature());
+        System.out.println(weather.getMinTemperature());
+        System.out.println(weather.getMaxTemperature());
     }
 }
