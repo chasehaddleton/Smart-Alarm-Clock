@@ -13,8 +13,26 @@ public class Clock {
         return LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
+    public String getYear() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("u"));
+    }
+
+    ;
+
+    public String getMonth() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("M"));
+    }
+
+    ;
+
+    public String getDay() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("D"));
+    }
+
+    ;
+
     public String getTime() {
-        return LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        return LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     public int getHour() {

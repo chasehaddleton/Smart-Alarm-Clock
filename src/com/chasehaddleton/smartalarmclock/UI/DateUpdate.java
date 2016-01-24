@@ -6,15 +6,18 @@ package com.chasehaddleton.smartalarmclock.UI;
 
 import com.chasehaddleton.smartalarmclock.clock.Clock;
 
-public class TimeUpdate implements Runnable {
+/**
+ * Created by Chase on 2016-01-24.
+ */
+public class DateUpdate implements Runnable {
     Clock clock = new Clock();
 
     @Override
     public void run() {
-        updateTime();
+        UpdateDate();
     }
 
-    private void updateTime() {
-        System.out.println(clock.getTime());
+    private void UpdateDate() {
+        System.out.println(clock.getDay() + "|" + clock.getMonth());
     }
 }
