@@ -4,9 +4,9 @@
   -->
 
 <project name="alarm_clock" default="all">
-  
-  
-  <property file="alarm_clock.properties"/>
+
+
+  <property file="build.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
@@ -168,6 +168,7 @@
   <path id="alarm_clock.module.sourcepath">
     <dirset dir="${module.alarm_clock.basedir}">
       <include name="src"/>
+      <include name="resources"/>
     </dirset>
   </path>
   
@@ -186,6 +187,10 @@
     
     <copy todir="${alarm_clock.output.dir}">
       <fileset dir="${module.alarm_clock.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.alarm_clock.basedir}/resources">
         <patternset refid="compiler.resources"/>
         <type type="file"/>
       </fileset>
