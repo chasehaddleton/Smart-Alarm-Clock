@@ -1,4 +1,4 @@
 language: java
+script: ant -d all
 jdk:
   - oraclejdk8
-  - oraclejdk7
