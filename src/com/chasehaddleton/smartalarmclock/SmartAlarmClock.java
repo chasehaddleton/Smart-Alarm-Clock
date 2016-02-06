@@ -25,9 +25,6 @@ public class SmartAlarmClock {
         int timeUntilNewMinute = 60 - clock.getSecond();
         int timeUntilNewHour = 60 - clock.getHour();
 
-        System.out.println(timeUntilNewDay);
-        System.out.println(timeUntilNewMinute);
-
         DateUpdate updateDate = new DateUpdate();
         TimeUpdate updateTime = new TimeUpdate();
         WeatherUpdate updateWeather = new WeatherUpdate(location);

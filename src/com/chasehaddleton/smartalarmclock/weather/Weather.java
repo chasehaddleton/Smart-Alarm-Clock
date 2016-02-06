@@ -27,7 +27,7 @@ public class Weather {
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
         } finally {
-            this.queryURL = (tempURL != null) ? tempURL : null;
+            this.queryURL = tempURL;
         }
     }
 
@@ -62,18 +62,18 @@ public class Weather {
     public double getTemperature() {
         OWM currentWeather = updateWeather();
 
-        return currentWeather.main.temp;
+        return Math.round(currentWeather.main.temp);
     }
 
     public double getMaxTemperature() {
         OWM currentWeather = updateWeather();
 
-        return currentWeather.main.temp_max;
+        return Math.round(currentWeather.main.temp_max);
     }
 
     public double getMinTemperature() {
         OWM currentWeather = updateWeather();
 
-        return currentWeather.main.temp_min;
+        return Math.round(currentWeather.main.temp_min);
     }
 }
