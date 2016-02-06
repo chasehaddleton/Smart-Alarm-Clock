@@ -14,8 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class SmartAlarmClock {
-
-    public static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
+    public static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(3);
 
     public static void main(String[] args) {
         String location = "Toronto";

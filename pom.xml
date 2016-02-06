@@ -1,0 +1,9 @@
+<!--
+  ~ Copyright (c) 2016. Chase Haddleton
+  -->
+
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.5</version>
+</dependency>

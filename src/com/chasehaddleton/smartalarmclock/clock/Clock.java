@@ -17,19 +17,13 @@ public class Clock {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("u"));
     }
 
-    ;
-
     public String getMonth() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("M"));
     }
 
-    ;
-
     public String getDay() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("D"));
     }
-
-    ;
 
     public String getTime() {
         return LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
