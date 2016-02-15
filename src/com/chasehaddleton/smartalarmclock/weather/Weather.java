@@ -53,7 +53,7 @@ public class Weather {
         return currentWeather.weather[0].description;
     }
 
-    public int getWeatherID() {
+    public double getWeatherID() {
         OWM currentWeather = updateWeather();
 
         return currentWeather.weather[0].id;

@@ -22,7 +22,7 @@ public class Clock {
     }
 
     public String getDay() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("D"));
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("d"));
     }
 
     public String getTime() {

@@ -9,17 +9,17 @@ class OWM {
     public final Weather weather[];
     public final String base;
     public final Main main;
-    public final int visibility;
+    public final double visibility;
     public final Wind wind;
     public final Clouds clouds;
-    public final long dt;
+    public final double dt;
     public final Sys sys;
-    public final long id;
+    public final double id;
     public final String name;
-    public final long cod;
+    public final double cod;
 
-    public OWM(Coord coord, Weather[] weather, String base, Main main, int visibility, Wind wind, Clouds clouds, long
-            dt, Sys sys, long id, String name, long cod) {
+    public OWM(Coord coord, Weather[] weather, String base, Main main, double visibility, Wind wind, Clouds clouds, double
+            dt, Sys sys, double id, String name, double cod) {
         this.coord = coord;
         this.weather = weather;
         this.base = base;
@@ -45,12 +45,12 @@ class OWM {
     }
 
     public final class Weather {
-        public final int id;
+        public final double id;
         public final String main;
         public final String description;
         public final String icon;
 
-        public Weather(int id, String main, String description, String icon) {
+        public Weather(double id, String main, String description, String icon) {
             this.id = id;
             this.main = main;
             this.description = description;
@@ -60,12 +60,12 @@ class OWM {
 
     public final class Main {
         public final double temp;
-        public final int pressure;
-        public final int humidity;
+        public final double pressure;
+        public final double humidity;
         public final double temp_min;
         public final double temp_max;
 
-        public Main(double temp, int pressure, int humidity, double temp_min, double temp_max) {
+        public Main(double temp, double pressure, double humidity, double temp_min, double temp_max) {
             this.temp = temp;
             this.pressure = pressure;
             this.humidity = humidity;
@@ -85,22 +85,22 @@ class OWM {
     }
 
     public final class Clouds {
-        public final int all;
+        public final double all;
 
-        public Clouds(int all) {
+        public Clouds(double all) {
             this.all = all;
         }
     }
 
     public final class Sys {
-        public final int type;
-        public final int id;
+        public final double type;
+        public final double id;
         public final double message;
         public final String country;
-        public final long sunrise;
-        public final long sunset;
+        public final double sunrise;
+        public final double sunset;
 
-        public Sys(int type, int id, double message, String country, long sunrise, long sunset) {
+        public Sys(double type, double id, double message, String country, double sunrise, double sunset) {
             this.type = type;
             this.id = id;
             this.message = message;

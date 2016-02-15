@@ -32,7 +32,7 @@ public class SmartAlarmClock {
         updateTime.run();
         updateWeather.run();
 
-        SmartAlarmClock.executor.scheduleAtFixedRate(updateDate, timeUntilNewDay, 3600, TimeUnit.MINUTES);
+        SmartAlarmClock.executor.scheduleAtFixedRate(updateDate, timeUntilNewDay, 1440, TimeUnit.MINUTES);
         SmartAlarmClock.executor.scheduleAtFixedRate(updateTime, timeUntilNewMinute, 60, TimeUnit.SECONDS);
         SmartAlarmClock.executor.scheduleAtFixedRate(updateWeather, timeUntilNewHour, 15, TimeUnit.MINUTES);
     }
