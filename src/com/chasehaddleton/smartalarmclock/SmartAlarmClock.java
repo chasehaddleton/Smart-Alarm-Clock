@@ -34,7 +34,7 @@ public class SmartAlarmClock extends Application {
 
         primaryStage.setScene(new Scene(root));
         primaryStage.setWidth(600);
-        primaryStage.setHeight(425);
+        primaryStage.setHeight(400);
         primaryStage.setTitle("Smart Alarm Clock");
 
         /*

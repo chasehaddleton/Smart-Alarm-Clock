@@ -26,7 +26,7 @@ public class Clock {
     }
 
     public String getTime() {
-        return LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
+        return LocalTime.now().format(DateTimeFormatter.ofPattern("h:mm"));
     }
 
     public int getHour() {
