@@ -5,16 +5,23 @@
 package com.chasehaddleton.smartalarmclock.UI;
 
 import com.chasehaddleton.smartalarmclock.clock.Clock;
+import javafx.application.Platform;
 
 public class DateUpdate implements Runnable {
-    Clock clock = new Clock();
+    private Clock clock;
+    private HomeController controller;
+
+    public DateUpdate(Clock clock, HomeController controller) {
+        this.clock = clock;
+        this.controller = controller;
+    }
 
     @Override
     public void run() {
-        UpdateDate();
+        Platform.runLater(this::updateDate);
     }
 
-    private void UpdateDate() {
-        System.out.println(clock.getDay() + "|" + clock.getMonth());
+    private void updateDate() {
+        controller.setDate(clock.getDay() + " | " + clock.getMonth());
     }
 }

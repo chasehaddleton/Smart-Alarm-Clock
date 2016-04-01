@@ -5,16 +5,24 @@
 package com.chasehaddleton.smartalarmclock.UI;
 
 import com.chasehaddleton.smartalarmclock.clock.Clock;
+import javafx.application.Platform;
 
 public class TimeUpdate implements Runnable {
-    Clock clock = new Clock();
+    private Clock clock;
+    private HomeController controller;
+
+    public TimeUpdate(Clock clock, HomeController controller) {
+        this.clock = clock;
+        this.controller = controller;
+    }
+
 
     @Override
     public void run() {
-        updateTime();
+        Platform.runLater(this::updateTime);
     }
 
     private void updateTime() {
-        System.out.println(clock.getTime());
+        controller.setTime(clock.getTime());
     }
 }
