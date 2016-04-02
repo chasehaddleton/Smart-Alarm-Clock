@@ -21,11 +21,12 @@ Alarm Clock-80c6022254d0.json
 *.tar
 *.zip
 
-# Logs and databases #
+# Logs, databases and datastore #
 ######################
 *.log
 *.sql
 *.sqlite
+/resources/datastore/*
 
 # OS generated files #
 ######################

@@ -16,7 +16,6 @@ public class TimeUpdate implements Runnable {
         this.controller = controller;
     }
 
-
     @Override
     public void run() {
         Platform.runLater(this::updateTime);

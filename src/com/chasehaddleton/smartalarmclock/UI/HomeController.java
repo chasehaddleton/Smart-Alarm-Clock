@@ -5,7 +5,6 @@
 package com.chasehaddleton.smartalarmclock.UI;
 
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -46,14 +45,14 @@ public class HomeController extends GridPane {
         textDate.setText(date);
     }
 
-    void setTemperature(double temperature) {
+    void setTemperature(String temperature) {
         textTemperature.setText(temperature + "°C");
     }
 
     void setWeather(String imageName) {
         try {
-            URL image = getClass().getClassLoader().getResource("images/" + imageName + ".png");
-            imgWeather.setImage(new Image(image.toString()));
+            URL image = getClass().getClassLoader().getResource("scene/images/" + imageName + ".png");
+            //imgWeather.setImage(new Image(image.toString()));
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }

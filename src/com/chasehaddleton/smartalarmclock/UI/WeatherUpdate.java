@@ -8,7 +8,10 @@ import com.chasehaddleton.smartalarmclock.clock.Clock;
 import com.chasehaddleton.smartalarmclock.weather.Weather;
 import javafx.application.Platform;
 
+import java.text.DecimalFormat;
+
 public class WeatherUpdate implements Runnable {
+    private final static DecimalFormat tempFormat = new DecimalFormat("0");
     private final String location;
     private final Clock clock = new Clock();
     private boolean updated;
@@ -36,18 +39,18 @@ public class WeatherUpdate implements Runnable {
     private void updateWeather() {
         Weather weather = new Weather(this.location);
         controller.setWeather(Weather.WeatherIDToImage(weather.getWeatherID()));
-        controller.setTemperature(weather.getTemperature());
+        controller.setTemperature(tempFormat.format(weather.getTemperature()));
     }
 
     private void updateWeather(Weather weather) {
         controller.setWeather(Weather.WeatherIDToImage(weather.getWeatherID()));
-        controller.setTemperature(weather.getTemperature());
+        controller.setTemperature(tempFormat.format(weather.getTemperature()));
     }
 
     private void updateWeatherExtended() {
         Weather weather = new Weather(this.location);
         updateWeather(weather);
-        controller.setTemperature(weather.getMinTemperature());
-        controller.setTemperature(weather.getMaxTemperature());
+        controller.setTemperature(tempFormat.format(weather.getTemperature()));
+        controller.setTemperature(tempFormat.format(weather.getTemperature()));
     }
 }

@@ -22,6 +22,6 @@ public class DateUpdate implements Runnable {
     }
 
     private void updateDate() {
-        controller.setDate(clock.getDay() + " | " + clock.getMonth());
+        controller.setDate(clock.getDay() + "  |  " + clock.getMonth());
     }
 }
