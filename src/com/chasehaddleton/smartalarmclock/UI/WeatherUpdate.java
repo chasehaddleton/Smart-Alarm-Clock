@@ -16,6 +16,7 @@ public class WeatherUpdate implements Runnable {
     private final Clock clock = new Clock();
     private boolean updated;
     private HomeController controller;
+    private Weather currentWeather;
 
     public WeatherUpdate(String location, HomeController controller) {
         this.location = location;
@@ -25,6 +26,7 @@ public class WeatherUpdate implements Runnable {
 
     @Override
     public void run() {
+        currentWeather = new Weather(this.location);
         if (clock.getHour() > 6 && clock.getHour() < 9) {
             Platform.runLater(this::updateWeatherExtended);
         } else if (!this.updated) {
@@ -37,20 +39,13 @@ public class WeatherUpdate implements Runnable {
     }
 
     private void updateWeather() {
-        Weather weather = new Weather(this.location);
-        controller.setWeather(Weather.WeatherIDToImage(weather.getWeatherID()));
-        controller.setTemperature(tempFormat.format(weather.getTemperature()));
-    }
-
-    private void updateWeather(Weather weather) {
-        controller.setWeather(Weather.WeatherIDToImage(weather.getWeatherID()));
-        controller.setTemperature(tempFormat.format(weather.getTemperature()));
+        controller.setWeather(Weather.WeatherIDToImage(currentWeather.getWeatherID()));
+        controller.setTemperature(tempFormat.format(currentWeather.getTemperature()));
     }
 
     private void updateWeatherExtended() {
-        Weather weather = new Weather(this.location);
-        updateWeather(weather);
-        controller.setTemperature(tempFormat.format(weather.getTemperature()));
-        controller.setTemperature(tempFormat.format(weather.getTemperature()));
+        updateWeather();
+        //controller.setTemperature(tempFormat.format(currentWeather.getTemperature()));
+        //controller.setTemperature(tempFormat.format(currentWeather.getTemperature()));
     }
 }

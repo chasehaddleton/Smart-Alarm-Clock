@@ -25,8 +25,8 @@ import java.util.concurrent.TimeUnit;
 
 public class SmartAlarmClock extends Application {
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(3);
-    public static UserPreferences usrPref;
-    private static Stage homeStage, configurationStage = null;
+    public static UserPreferences usrPref = null;
+    private static Stage homeStage = null, configurationStage = null;
 
     public static void main(String[] args) {
         launch(args);
@@ -60,7 +60,7 @@ public class SmartAlarmClock extends Application {
 
         int timeUntilNewDay = (24 - clock.getHour()) * 60 - clock.getMinute();
         int timeUntilNewMinute = 60 - clock.getSecond();
-        int timeUntilNewHour = 60 - clock.getHour();
+        int timeUntilNextThird = (60 - clock.getMinute()) % 20;
 
         DateUpdate updateDate = new DateUpdate(clock, HomeController.getInstance());
         TimeUpdate updateTime = new TimeUpdate(clock, HomeController.getInstance());
@@ -72,7 +72,9 @@ public class SmartAlarmClock extends Application {
 
         SmartAlarmClock.executor.scheduleAtFixedRate(updateDate, timeUntilNewDay, 1440, TimeUnit.MINUTES);
         SmartAlarmClock.executor.scheduleAtFixedRate(updateTime, timeUntilNewMinute, 60, TimeUnit.SECONDS);
-        SmartAlarmClock.executor.scheduleAtFixedRate(updateWeather, timeUntilNewHour, 20, TimeUnit.MINUTES);
+        SmartAlarmClock.executor.scheduleAtFixedRate(updateWeather, timeUntilNextThird, 20, TimeUnit.MINUTES);
+
+        usrPref = null;
     }
 
     @Override
