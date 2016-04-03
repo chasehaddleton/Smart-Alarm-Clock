@@ -2,7 +2,7 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.smartalarmclock.UI;
+package com.chasehaddleton.smartalarmclock.ui;
 
 import com.chasehaddleton.smartalarmclock.clock.Clock;
 import javafx.application.Platform;

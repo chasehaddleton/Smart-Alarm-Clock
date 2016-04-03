@@ -12,7 +12,7 @@
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
           style="-fx-background-color: #000012;" xmlns="http://javafx.com/javafx/8"
-          fx:controller="com.chasehaddleton.smartalarmclock.UI.HomeController">
+          fx:controller="com.chasehaddleton.smartalarmclock.ui.HomeController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0"/>

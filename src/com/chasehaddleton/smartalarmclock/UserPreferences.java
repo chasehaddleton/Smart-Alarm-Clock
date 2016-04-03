@@ -9,8 +9,9 @@ import com.sun.istack.internal.NotNull;
 import java.io.*;
 
 public class UserPreferences implements Serializable, Runnable {
-    private String email;
-    private String cityName, country, country_code;
+    private String email = null;
+    private String cityName = null, country = null, country_code = null;
+    private boolean connectEmail = false;
 
     public UserPreferences(String email, String cityName) {
         this.email = email;
@@ -27,6 +28,9 @@ public class UserPreferences implements Serializable, Runnable {
         return cityName;
     }
 
+    public boolean isConnectEmail() {
+        return connectEmail;
+    }
 
     @Override
     public void run() {
