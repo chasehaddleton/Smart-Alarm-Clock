@@ -15,10 +15,10 @@ public class WeatherUpdate implements Runnable {
     private final String location;
     private final Clock clock = new Clock();
     private boolean updated;
-    private HomeController controller;
+    private ClockController controller;
     private Weather currentWeather;
 
-    public WeatherUpdate(String location, HomeController controller) {
+    public WeatherUpdate(String location, ClockController controller) {
         this.location = location;
         this.controller = controller;
         this.updated = false;

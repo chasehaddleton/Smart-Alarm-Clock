@@ -9,9 +9,9 @@ import javafx.application.Platform;
 
 public class DateUpdate implements Runnable {
     private Clock clock;
-    private HomeController controller;
+    private ClockController controller;
 
-    public DateUpdate(Clock clock, HomeController controller) {
+    public DateUpdate(Clock clock, ClockController controller) {
         this.clock = clock;
         this.controller = controller;
     }

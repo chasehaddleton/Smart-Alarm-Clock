@@ -7,8 +7,8 @@
 package com.chasehaddleton.smartalarmclock;
 
 import com.chasehaddleton.smartalarmclock.clock.Clock;
+import com.chasehaddleton.smartalarmclock.ui.ClockController;
 import com.chasehaddleton.smartalarmclock.ui.DateUpdate;
-import com.chasehaddleton.smartalarmclock.ui.HomeController;
 import com.chasehaddleton.smartalarmclock.ui.TimeUpdate;
 import com.chasehaddleton.smartalarmclock.ui.WeatherUpdate;
 import javafx.application.Application;
@@ -42,15 +42,15 @@ public class SmartAlarmClock extends Application {
         Parent root = null;
 
         try {
-            root = new FXMLLoader(SmartAlarmClock.class.getClassLoader().getResource("scene/home.fxml")).load();
+            root = new FXMLLoader(SmartAlarmClock.class.getClassLoader().getResource("scene/clock.fxml")).load();
         } catch (IOException ex) {
             System.err.print("Error loading primary stage. Application must exit");
             System.exit(1);
         }
 
         homeStage.setScene(new Scene(root));
-        homeStage.setWidth(600);
-        homeStage.setHeight(400);
+        homeStage.setWidth(800);
+        homeStage.setHeight(480);
         homeStage.setTitle("Smart Alarm Clock");
 
         runClock();
@@ -81,16 +81,16 @@ public class SmartAlarmClock extends Application {
     }
 
     private static void runClock() {
-        HomeController homeController = HomeController.getInstance();
+        ClockController clockController = ClockController.getInstance();
         Clock clock = new Clock();
 
         int timeUntilNewDay = (24 - clock.getHour()) * 60 - clock.getMinute();
         int timeUntilNewMinute = 60 - clock.getSecond();
         int timeUntilNextThirdHour = (60 - clock.getMinute()) % 20;
 
-        DateUpdate updateDate = new DateUpdate(clock, homeController);
-        TimeUpdate updateTime = new TimeUpdate(clock, homeController);
-        WeatherUpdate updateWeather = new WeatherUpdate(usrPref.getCityName(), homeController);
+        DateUpdate updateDate = new DateUpdate(clock, clockController);
+        TimeUpdate updateTime = new TimeUpdate(clock, clockController);
+        WeatherUpdate updateWeather = new WeatherUpdate(usrPref.getCityName(), clockController);
 
         updateDate.run();
         updateTime.run();

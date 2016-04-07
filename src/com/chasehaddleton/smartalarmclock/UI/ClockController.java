@@ -2,19 +2,23 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.smartalarmclock.UI;
+package com.chasehaddleton.smartalarmclock.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.apache.commons.lang.WordUtils;
 
 import java.net.URL;
 
-public class HomeController extends GridPane {
-    private static HomeController instance = null;
+public class ClockController extends AnchorPane {
+    private static ClockController instance = null;
+
+    @FXML
+    private Stage stage;
 
     @FXML
     private Text textTime;
@@ -28,13 +32,13 @@ public class HomeController extends GridPane {
     @FXML
     private ImageView imgWeather;
 
-    public HomeController() {
+    public ClockController() {
         if (instance == null) instance = this;
     }
 
-    public static HomeController getInstance() {
+    public static ClockController getInstance() {
         if (instance == null) {
-            instance = new HomeController();
+            instance = new ClockController();
         }
         return instance;
     }

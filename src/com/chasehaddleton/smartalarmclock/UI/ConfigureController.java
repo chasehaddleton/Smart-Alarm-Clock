@@ -2,7 +2,7 @@
  * Copyright (c) 2016. Chase Haddleton
  */
 
-package com.chasehaddleton.smartalarmclock.UI;
+package com.chasehaddleton.smartalarmclock.ui;
 
 import com.chasehaddleton.smartalarmclock.SmartAlarmClock;
 import com.chasehaddleton.smartalarmclock.UserPreferences;
@@ -11,9 +11,13 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class ConfigureController extends GridPane {
     private static ConfigureController instance = null;
+
+    @FXML
+    private Stage stage;
 
     @FXML
     private TextField textEmail;

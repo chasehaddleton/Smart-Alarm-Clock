@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2016. Chase Haddleton
+  -->
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000012;"
+            xmlns="http://javafx.com/javafx/8" fx:controller="com.chasehaddleton.smartalarmclock.ui.ClockController">
+    <children>
+        <Circle fill="#c8ced3" layoutX="300.0" layoutY="200.0" radius="165.0" stroke="BLACK" strokeType="INSIDE"
+                strokeWidth="0.0"/>
+        <Circle fill="#000012" layoutX="300.0" layoutY="201.0" radius="158.0" stroke="BLACK" strokeType="INSIDE"
+                strokeWidth="0.0"/>
+        <Text fx:id="textTime" boundsType="VISUAL" fill="WHITE" layoutX="180.0" layoutY="234.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="10:00" textAlignment="CENTER">
+            <font>
+                <Font name="Akashi Regular" size="94.0"/>
+            </font>
+        </Text>
+        <Text fx:id="textDate" boundsType="VISUAL" fill="WHITE" layoutX="258.0" layoutY="142.0" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="00 | 00" textAlignment="CENTER">
+            <font>
+                <Font name="Michroma" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="textTemperature" boundsType="VISUAL" fill="WHITE" layoutX="179.0" layoutY="261.0"
+              strokeType="OUTSIDE" strokeWidth="0.0" text="00°C" textAlignment="CENTER">
+            <font>
+                <Font name="Michroma" size="13.0"/>
+            </font>
+        </Text>
+        <ImageView fx:id="imgWeather" fitHeight="50.0" fitWidth="50.0" layoutX="230.0" layoutY="262.0"
+                   pickOnBounds="true" preserveRatio="true"/>
+    </children>
+</AnchorPane>
