@@ -80,41 +80,6 @@
     <exclude name="**/?*.aj"/>
   </patternset>
 
-  <!-- JDK definitions -->
-
-  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
-  <path id="jdk.classpath.1.8">
-    <fileset dir="${jdk.home.1.8}">
-      <include name="jre/lib/charsets.jar"/>
-      <include name="jre/lib/deploy.jar"/>
-      <include name="jre/lib/javaws.jar"/>
-      <include name="jre/lib/jce.jar"/>
-      <include name="jre/lib/jfr.jar"/>
-      <include name="jre/lib/jfxswt.jar"/>
-      <include name="jre/lib/jsse.jar"/>
-      <include name="jre/lib/management-agent.jar"/>
-      <include name="jre/lib/plugin.jar"/>
-      <include name="jre/lib/resources.jar"/>
-      <include name="jre/lib/rt.jar"/>
-      <include name="jre/lib/ext/access-bridge-64.jar"/>
-      <include name="jre/lib/ext/cldrdata.jar"/>
-      <include name="jre/lib/ext/dnsns.jar"/>
-      <include name="jre/lib/ext/jaccess.jar"/>
-      <include name="jre/lib/ext/jfxrt.jar"/>
-      <include name="jre/lib/ext/localedata.jar"/>
-      <include name="jre/lib/ext/nashorn.jar"/>
-      <include name="jre/lib/ext/sunec.jar"/>
-      <include name="jre/lib/ext/sunjce_provider.jar"/>
-      <include name="jre/lib/ext/sunmscapi.jar"/>
-      <include name="jre/lib/ext/sunpkcs11.jar"/>
-      <include name="jre/lib/ext/zipfs.jar"/>
-    </fileset>
-  </path>
-
-  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
-
 
   <!-- Project Libraries -->
 
@@ -178,10 +143,6 @@
   <dirname property="module.alarm_clock.basedir" file="${ant.file}"/>
 
 
-  <property name="module.jdk.home.alarm_clock" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.alarm_clock" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.alarm_clock" value="${project.jdk.classpath}"/>
-  
   <property name="compiler.args.alarm_clock" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
   
   <property name="alarm_clock.output.dir" value="${module.alarm_clock.basedir}/out/production/Alarm Clock"/>
@@ -192,7 +153,6 @@
   </path>
   
   <path id="alarm_clock.module.production.classpath">
-    <path refid="${module.jdk.classpath.alarm_clock}"/>
     <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
     <path refid="library.commons-lang:commons-lang:2.6.classpath"/>
     <path refid="library.com.google.oauth-client:google-oauth-client-jetty:1.21.0.classpath"/>
@@ -210,7 +170,6 @@
   </path>
   
   <path id="alarm_clock.module.classpath">
-    <path refid="${module.jdk.classpath.alarm_clock}"/>
     <pathelement location="${alarm_clock.output.dir}"/>
     <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
     <path refid="library.commons-lang:commons-lang:2.6.classpath"/>
@@ -251,7 +210,7 @@
   <target name="compile.module.alarm_clock.production" description="Compile module Alarm Clock; production classes">
     <mkdir dir="${alarm_clock.output.dir}"/>
     <javac destdir="${alarm_clock.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
-           memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.alarm_clock}/javac">
+           memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.alarm_clock}"/>
       <bootclasspath refid="alarm_clock.module.bootclasspath"/>
       <classpath refid="alarm_clock.module.production.classpath"/>
