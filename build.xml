@@ -80,41 +80,6 @@
     <exclude name="**/?*.aj"/>
   </patternset>
   
-  <!-- JDK definitions -->
-  
-  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
-  <path id="jdk.classpath.1.8">
-    <fileset dir="${jdk.home.1.8}">
-      <include name="jre/lib/charsets.jar"/>
-      <include name="jre/lib/deploy.jar"/>
-      <include name="jre/lib/javaws.jar"/>
-      <include name="jre/lib/jce.jar"/>
-      <include name="jre/lib/jfr.jar"/>
-      <include name="jre/lib/jfxswt.jar"/>
-      <include name="jre/lib/jsse.jar"/>
-      <include name="jre/lib/management-agent.jar"/>
-      <include name="jre/lib/plugin.jar"/>
-      <include name="jre/lib/resources.jar"/>
-      <include name="jre/lib/rt.jar"/>
-      <include name="jre/lib/ext/access-bridge-64.jar"/>
-      <include name="jre/lib/ext/cldrdata.jar"/>
-      <include name="jre/lib/ext/dnsns.jar"/>
-      <include name="jre/lib/ext/jaccess.jar"/>
-      <include name="jre/lib/ext/jfxrt.jar"/>
-      <include name="jre/lib/ext/localedata.jar"/>
-      <include name="jre/lib/ext/nashorn.jar"/>
-      <include name="jre/lib/ext/sunec.jar"/>
-      <include name="jre/lib/ext/sunjce_provider.jar"/>
-      <include name="jre/lib/ext/sunmscapi.jar"/>
-      <include name="jre/lib/ext/sunpkcs11.jar"/>
-      <include name="jre/lib/ext/zipfs.jar"/>
-    </fileset>
-  </path>
-  
-  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
-  
   
   <!-- Project Libraries -->
 
@@ -169,18 +134,6 @@
   <path id="library.commons-lang:commons-lang:2.6.classpath">
     <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
   </path>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <pathelement location="${javac2.home}/javac2.jar"/>
-    <pathelement location="${javac2.home}/jdom.jar"/>
-    <pathelement location="${javac2.home}/asm-all.jar"/>
-    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
-  </target>
   
   <!-- Modules -->
   
@@ -190,9 +143,6 @@
   <dirname property="module.alarm_clock.basedir" file="${ant.file}"/>
   
   
-  <property name="module.jdk.home.alarm_clock" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.alarm_clock" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.alarm_clock" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.alarm_clock" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
   
@@ -204,7 +154,6 @@
   </path>
   
   <path id="alarm_clock.module.production.classpath">
-    <path refid="${module.jdk.classpath.alarm_clock}"/>
     <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
     <path refid="library.commons-lang:commons-lang:2.6.classpath"/>
     <path refid="library.com.google.oauth-client:google-oauth-client-jetty:1.21.0.classpath"/>
@@ -222,7 +171,6 @@
   </path>
   
   <path id="alarm_clock.module.classpath">
-    <path refid="${module.jdk.classpath.alarm_clock}"/>
     <pathelement location="${alarm_clock.output.dir}"/>
     <path refid="library.com.google.code.gson:gson:2.5.classpath"/>
     <path refid="library.commons-lang:commons-lang:2.6.classpath"/>
@@ -259,16 +207,17 @@
   
   
   <target name="compile.module.alarm_clock" depends="compile.module.alarm_clock.production,compile.module.alarm_clock.tests" description="Compile module Alarm Clock"/>
-  
-  <target name="compile.module.alarm_clock.production" depends="register.custom.compilers" description="Compile module Alarm Clock; production classes">
+
+  <target name="compile.module.alarm_clock.production" description="Compile module Alarm Clock; production classes">
     <mkdir dir="${alarm_clock.output.dir}"/>
-    <javac2 destdir="${alarm_clock.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.alarm_clock}/javac">
+    <javac destdir="${alarm_clock.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
+           memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.alarm_clock}"/>
       <bootclasspath refid="alarm_clock.module.bootclasspath"/>
       <classpath refid="alarm_clock.module.production.classpath"/>
       <src refid="alarm_clock.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.alarm_clock"/>
-    </javac2>
+    </javac>
     
     <copy todir="${alarm_clock.output.dir}">
       <fileset dir="${module.alarm_clock.basedir}/src">
@@ -281,8 +230,9 @@
       </fileset>
     </copy>
   </target>
-  
-  <target name="compile.module.alarm_clock.tests" depends="register.custom.compilers,compile.module.alarm_clock.production" description="compile module Alarm Clock; test classes" unless="skip.tests"/>
+
+  <target name="compile.module.alarm_clock.tests" depends="compile.module.alarm_clock.production"
+          description="compile module Alarm Clock; test classes" unless="skip.tests"/>
   
   <target name="clean.module.alarm_clock" description="cleanup module">
     <delete dir="${alarm_clock.output.dir}"/>
