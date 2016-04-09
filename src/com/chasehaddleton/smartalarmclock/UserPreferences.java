@@ -24,8 +24,6 @@
 
 package com.chasehaddleton.smartalarmclock;
 
-import com.sun.istack.internal.NotNull;
-
 import java.io.*;
 
 public class UserPreferences implements Serializable, Runnable {
@@ -38,12 +36,10 @@ public class UserPreferences implements Serializable, Runnable {
         this.cityName = cityName;
     }
 
-    @NotNull
     public String getEmail() {
         return email;
     }
 
-    @NotNull
     public String getCityName() {
         return cityName;
     }

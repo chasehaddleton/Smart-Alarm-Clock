@@ -8,10 +8,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="com.google.code.gson:gson:2.5" level="project" />
-    <orderEntry type="library" name="commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="com.google.oauth-client:google-oauth-client-jetty:1.21.0" level="project" />
     <orderEntry type="library" name="com.google.api-client:google-api-client:1.21.0" level="project" />
     <orderEntry type="library" name="com.google.apis:google-api-services-gmail:v1-rev34-1.21.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.6.2" level="project" />
+    <orderEntry type="library" name="commons-lang:commons-lang:2.61" level="project" />
   </component>
 </module>

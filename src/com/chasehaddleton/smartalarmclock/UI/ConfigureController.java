@@ -26,7 +26,6 @@ package com.chasehaddleton.smartalarmclock.ui;
 
 import com.chasehaddleton.smartalarmclock.SmartAlarmClock;
 import com.chasehaddleton.smartalarmclock.UserPreferences;
-import com.sun.istack.internal.NotNull;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -65,12 +64,10 @@ public class ConfigureController extends GridPane {
         Platform.runLater(SmartAlarmClock::loadHomeStage);
     }
 
-    @NotNull
     public String getEmail() {
         return textEmail.getText();
     }
 
-    @NotNull
     public String getCityName() {
         return textCityName.getText();
     }
