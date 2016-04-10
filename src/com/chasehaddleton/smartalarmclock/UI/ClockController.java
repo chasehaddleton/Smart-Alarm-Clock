@@ -77,7 +77,8 @@ public class ClockController extends AnchorPane {
 
     void setWeather(String imageName) {
         try {
-            URL image = getClass().getClassLoader().getResource("scene/images/" + WordUtils.capitalize(imageName).replaceAll("[^A-z]", "") + ".png");
+            URL image = getClass().getClassLoader().getResource("scene/images/" + WordUtils.capitalize(imageName)
+                    .replaceAll("[^A-z]", "-") + ".png");
             imgWeather.setImage(new Image(image.toString()));
         } catch (NullPointerException ex) {
             System.err.println("Request file: " + WordUtils.capitalize(imageName).replaceAll("[^A-z]", "") + ".png");

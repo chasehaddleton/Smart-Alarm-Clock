@@ -22,29 +22,20 @@
  * SOFTWARE.
  */
 
-.root {
-    backgroundColour: #000012;
-}
-
-AnchorPane, GridPane {
-    -fx-background-color: backgroundColour;
-}
-
-Text {
-    -fx-fill: #FFFFFF;
-    -fx-font-family: Michroma;
-}
-
-@font-face {
-    font-family: Akashi;
-    src: url("Akashi.ttf");
-}
-
-@font-face {
-    font-family: Michroma;
-    src: url("Michroma.ttf");
-}
-
-.Akashi {
+#time {
     -fx-font-family: Akashi;
+    -fx-font-size: 105px;
+    -fx-fill: #FFFFFF;
+}
+
+#date {
+    -fx-font-size: 20px;
+}
+
+#temperature {
+    -fx-font-size: 16px;
+}
+
+#weather {
+    -fx-font-family: "artill clean weather icons regular";
 }
