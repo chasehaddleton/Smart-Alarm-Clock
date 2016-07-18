@@ -116,9 +116,9 @@ public class SmartAlarmClock extends Application {
         updateTime.run();
         updateWeather.run();
 
-        SmartAlarmClock.executor.scheduleAtFixedRate(updateDate, timeUntilNewDay, 1440, TimeUnit.MINUTES);
-        SmartAlarmClock.executor.scheduleAtFixedRate(updateTime, timeUntilNewMinute, 60, TimeUnit.SECONDS);
-        SmartAlarmClock.executor.scheduleAtFixedRate(updateWeather, timeUntilNextThirdHour, 20, TimeUnit.MINUTES);
+        executor.scheduleAtFixedRate(updateDate, timeUntilNewDay, 1440, TimeUnit.MINUTES);
+        executor.scheduleAtFixedRate(updateTime, timeUntilNewMinute, 60, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(updateWeather, timeUntilNextThirdHour, 20, TimeUnit.MINUTES);
     }
 
     @Override

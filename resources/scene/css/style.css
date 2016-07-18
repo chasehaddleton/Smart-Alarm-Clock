@@ -23,16 +23,34 @@
  */
 
 .root {
-    backgroundColour: #000012;
+    backgroundColour: #1B2B32;
+    secondaryColour: #37646F;
+    tertiaryColour: #A3ABAF;
+    mainColour: #E1E7E8;
+    accentColour: #B22E2F;
 }
 
 AnchorPane, GridPane {
     -fx-background-color: backgroundColour;
 }
 
-Text {
-    -fx-fill: #FFFFFF;
+DialogPane {
+    -fx-background-color: secondaryColour;
+}
+
+Button {
+    -fx-background-color: accentColour;
+    -fx-text-fill: mainColour;
+    -fx-font-size: 8px;
+    -fx-padding: 0 5px 0 5px;
+    -fx-border-radius: 0;
     -fx-font-family: Michroma;
+}
+
+Text {
+    -fx-fill: mainColour;
+    -fx-font-family: Michroma;
+    -fx-font-size: 14px;
 }
 
 @font-face {
@@ -47,4 +65,26 @@ Text {
 
 .Akashi {
     -fx-font-family: Akashi;
+}
+
+#time {
+    -fx-font-family: Akashi;
+    -fx-font-size: 105px;
+    -fx-fill: mainColour;
+}
+
+#date {
+    -fx-font-size: 20px;
+}
+
+#temperature {
+    -fx-font-size: 16px;
+}
+
+#weather {
+    -fx-font-family: "artill clean weather icons regular";
+}
+
+#innerCircle {
+    -fx-fill: backgroundColour;
 }

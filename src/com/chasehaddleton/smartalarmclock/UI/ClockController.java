@@ -25,6 +25,7 @@
 package com.chasehaddleton.smartalarmclock.ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -51,6 +52,9 @@ public class ClockController extends AnchorPane {
 
     @FXML
     private ImageView imgWeather;
+
+    @FXML
+    private DialogPane paneNotification;
 
     public ClockController() {
         if (instance == null) instance = this;

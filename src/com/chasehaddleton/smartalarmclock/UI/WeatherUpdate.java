@@ -50,9 +50,7 @@ public class WeatherUpdate implements Runnable {
         if (clock.getHour() > 6 && clock.getHour() < 9) {
             Platform.runLater(this::updateWeatherExtended);
         } else if (!this.updated) {
-            {
-                Platform.runLater(this::updateWeather);
-            }
+            Platform.runLater(this::updateWeather);
         }
 
         this.updated = !this.updated;
